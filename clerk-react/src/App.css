@@ -1,8 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600&display=swap');
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  font-family: 'Quicksand', sans-serif;
+  background-image: url('/assets/farm.jpeg'); /* Replace with a real farm background image */
+
+
 }
 
 .logo {
