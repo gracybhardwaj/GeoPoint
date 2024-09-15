@@ -1,16 +1,12 @@
-import dgram from 'dgram'; // ES module import
-import axios from 'axios'; // ES module import
-import convexClient from './convexClient.js'; // Use .js extension for ES modules
+import dgram from 'dgram'; // Node.js built-in module for UDP
+import axios from 'axios'; // For making API requests
+import convexClient from './convexClient.js'; // Import convexClient for interacting with Convex backend
 
-// Create UDP socket server
+// Create UDP socket server using dgram module
 const server = dgram.createSocket('udp4');
 
-// Define a port to listen to UDP packets (change as needed)
-const PORT = 41234;
-
-server.on('listening', () => {
-    console.log('UDP server is up and listening on port', PORT);
-  });
+// Define the port for the server to listen for UDP packets
+const PORT = 5174;
 
 // Handle incoming UDP packets
 server.on('message', async (msg, rinfo) => {
@@ -20,13 +16,13 @@ server.on('message', async (msg, rinfo) => {
     // Assuming the packet contains JSON data
     const payload = JSON.parse(msg);
 
-    // Extract sensor data
+    // Extract sensor data from the payload
     const { humidity, temp, uv, sensor_id } = payload;
 
-    // Optional: Fetch additional details from Monogoto API, like IP addresses
-    const sensorIP = await getSensorIP(sensor_id);
+    // Optional: Fetch additional details from Monogoto API (like sensor IP)
+    const sensorIP = await getSensorIP(sensor_id); // Optional call to an external API
 
-    // Send parsed data to Convex backend
+    // Send parsed data to Convex backend using convexClient
     const recordId = await convexClient.createRecord({
       humidity: parseFloat(humidity),
       temp: parseFloat(temp),
@@ -42,10 +38,10 @@ server.on('message', async (msg, rinfo) => {
 
 // Fetch sensor IP from Monogoto API (optional)
 async function getSensorIP(sensor_id) {
-  const url = `https://api.monogoto.io/v1/sensor/${sensor_id}/ip`; // Replace with actual Monogoto API
+  const url = `https://api.monogoto.io/v1/sensor/${sensor_id}/ip`; // Replace with actual Monogoto API URL
   try {
     const response = await axios.get(url, {
-      headers: { 'Authorization': `Bearer YOUR_API_KEY` },
+      headers: { 'Authorization': `Bearer YOUR_API_KEY` }, // Replace with your Monogoto API key
     });
     return response.data.ip;
   } catch (error) {
@@ -53,8 +49,10 @@ async function getSensorIP(sensor_id) {
   }
 }
 
-// Start listening for UDP packets
+// Start the UDP server and listen on the specified port
 server.bind(PORT, () => {
   console.log(`UDP server listening on port ${PORT}`);
+
 });
 
+await new Promise(((r) => setTimeout(() => r(), 10_000)))
