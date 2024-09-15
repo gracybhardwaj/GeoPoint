@@ -1,32 +1,48 @@
-.data-cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    padding: 2rem;
-    max-width: 1200px;
-    margin: auto;
+/* CropDashboard.css */
+.crop-dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
   }
   
-  .card {
-    background-color: white;
-    padding: 1.5rem;
-    border-radius: 10px;
+  .crop-container {
+    background-color: #bceea7;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
   }
   
-  .card:hover {
-    transform: translateY(-5px);
-  }
+  /* AI Suggestions Section */
+/* AI Suggestions Section */
+.ai-suggestions {
+    background-color: #f0f4f8;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
+}
+
+.ai-suggestions-container {
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    width: 100%; /* Ensures it takes full width */
+    max-width: 600px; /* Optional: Limits the width of the suggestions */
+    text-align: center; /* Center text within the container */
+}
   
-  h3 {
+  .ai-suggestions-container h4 {
     color: #f6ad55;
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 10px;
   }
   
-  p {
-    font-size: 1rem;
-    color: #2d3748;
+  .ai-suggestions-container p {
+    color: #333;
   }
-  

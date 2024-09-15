@@ -44,5 +44,26 @@
 }
 
 .read-the-docs {
-  color: #888;
+  color: #bceea7;
+}
+
+.crop-dashboard {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px;
+}
+
+.crop-data-container,
+.ai-suggestions-container {
+  width: 45%; /* Each section will take up roughly half of the width */
+}
+
+h2 {
+  text-align: center;
+}
+
+ul {
+  list-style-type: disc;
+  padding-left: 20px;
 }
