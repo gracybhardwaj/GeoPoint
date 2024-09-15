@@ -1,40 +1,45 @@
+// src/components/CropDashboard.tsx
 import React, { useState, useEffect } from 'react';
-import './CropDashboard.css';
+import { useQuery } from 'convex/react';
+import { api } from '../convex/_generated/api'; // Import the auto-generated API from Convex
 
-function CropDashboard() {
-  const [crops, setCrops] = useState([
-    { name: 'Wheat', humidity: 'Loading...', mineralComposition: 'Loading...', weather: 'Loading...', uvi: 'Loading...' },
-    { name: 'Corn', humidity: 'Loading...', mineralComposition: 'Loading...', weather: 'Loading...', uvi: 'Loading...' },
-    { name: 'Rice', humidity: 'Loading...', mineralComposition: 'Loading...', weather: 'Loading...', uvi: 'Loading...' },
-  ]);
+// Define the interface for the query result
+interface Record {
+  sensor_id: string;
+  humidity: number;
+  temp: number;
+  uv: number;
+}
+
+interface CropDashboardProps {
+  farmerId: string; // Explicitly defining the type for farmerId
+}
+
+function CropDashboard({ farmerId }: CropDashboardProps) {
+  // Fetch records from the Convex backend for the given farmerId
+  const records = useQuery(api.myFunctions.cropToFarmer, { farmer_id: farmerId }); // Pass function reference, not string
+  
+  const [crops, setCrops] = useState<Record[]>([]); // Using Record type
 
   useEffect(() => {
-    const fetchData = () => {
-      const updatedCrops = crops.map(crop => ({
-        ...crop,
-        humidity: '45%',
-        mineralComposition: 'Nitrogen: 20%, Phosphorus: 10%, Potassium: 5%',
-        weather: 'Sunny, 24°C',
-        uvi: '5 (Moderate)'
-      }));
-      setCrops(updatedCrops);
-    };
-
-    fetchData();
-  }, []);
+    if (records) {
+      // Update the crop data based on the records fetched
+      setCrops(records);
+    }
+  }, [records]);
 
   return (
-    <section className="data-cards">
+    <div>
+      {/* Render the crop data */}
       {crops.map((crop, index) => (
-        <div key={index} className="card">
-          <h3>{crop.name}</h3>
-          <p><strong>Soil Humidity:</strong> {crop.humidity}</p>
-          <p><strong>Mineral Composition:</strong> {crop.mineralComposition}</p>
-          <p><strong>Weather Data:</strong> {crop.weather}</p>
-          <p><strong>UV Index:</strong> {crop.uvi}</p>
+        <div key={index}>
+          <h3>Sensor ID: {crop.sensor_id}</h3>
+          <p>Humidity: {crop.humidity}%</p>
+          <p>Temperature: {crop.temp}°C</p>
+          <p>UV Index: {crop.uv}</p>
         </div>
       ))}
-    </section>
+    </div>
   );
 }
 

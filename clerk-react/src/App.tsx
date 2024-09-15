@@ -4,15 +4,7 @@ import CropDashboard from "./CropDashboard";
 import './App.css';
 
 export default function App() {
-  const { user } = useUser(); // Access the authenticated user
-
-  // Define the expected structure for publicMetadata
-  type PublicMetadataType = {
-    location?: string;
-  };
-
-  // Cast the user.publicMetadata to the defined type
-  const publicMetadata = user?.publicMetadata as PublicMetadataType;
+  const { user } = useUser();
 
   return (
     <div className="App">
@@ -24,15 +16,14 @@ export default function App() {
         <SignedIn>
           <div className="user-info">
             <UserButton />
-            {/* Display user's name and location */}
             {user && (
               <span className="user-name">
-                Welcome, Farmer {user.firstName || user.fullName}{" "}
-                {publicMetadata?.location && `from ${publicMetadata.location}`}
+                Welcome, Farmer {user.firstName || user.fullName}
               </span>
             )}
           </div>
-          <CropDashboard />
+          {/* Pass the Clerk user ID as farmerId to CropDashboard */}
+          {user && <CropDashboard farmerId={user.id} />}
         </SignedIn>
       </header>
     </div>
