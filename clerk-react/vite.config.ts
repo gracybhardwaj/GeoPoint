@@ -1,7 +1,11 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
-})
+  build: {
+    rollupOptions: {
+      // Specify dgram (and other Node.js built-ins if necessary) as external
+      external: ['dgram'],
+    },
+  },
+  // You can add other Vite configurations here for your frontend if necessary
+});
