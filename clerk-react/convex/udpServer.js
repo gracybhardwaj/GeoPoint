@@ -1,15 +1,9 @@
-console.log("a")
-
 import dgram from 'dgram'; // Node.js built-in module for UDP
-console.log("b")
 import axios from 'axios'; // For making API requests
-console.log("c")
 import convexClient from './convexClient.js'; // Import convexClient for interacting with Convex backend
-console.log("d")
 
 // Create UDP socket server using dgram module
 const server = dgram.createSocket('udp4');
-console.log(server)
 
 // Define the port for the server to listen for UDP packets
 const PORT = 5174;
