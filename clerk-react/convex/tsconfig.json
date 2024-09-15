@@ -20,6 +20,6 @@
     "isolatedModules": true,
     "noEmit": true
   },
-  "include": ["./**/*", "../src/myFunctions.tsions.ts"],
+  "include": ["./**/*", "../src/myFunctions.tsions.ts", "../src/dummy.ts"],
   "exclude": ["./_generated"]
 }

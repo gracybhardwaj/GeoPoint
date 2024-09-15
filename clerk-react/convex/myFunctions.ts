@@ -60,33 +60,3 @@ export const cropToFarmer = query({
     return records;
   },
 });
-
-// export const cropToFarmer = query(async ({ db }, { farmer_id }) => {
-//   // Step 1: Get all crops for the farmer
-//   const crops = await db.query("crops")
-//                         .filter(q => q.eq("farmer_id", farmer_id))
-//                         .collect();
-//   if (crops.length === 0) {
-//     return []; // No crops found for the farmer
-//   }
-
-//   const cropIds = crops.map(crop => crop.crop_id);
-  
-//   // Step 2: Get all sensors related to those crops
-//   const sensors = await db.query("sensors")
-//                           .filter(q => cropIds.includes(q.field("crop_id")))
-//                           .collect();
-//   if (sensors.length === 0) {
-//     return []; // No sensors found for the crops
-//   }
-
-//   const sensorIds = sensors.map(sensor => sensor.sensor_id);
-
-//   // Step 3: Fetch all records related to the sensor ids
-//   const records = await db.query("records")
-//                           .filter(q => sensorIds.includes(q.field("sensor_id")))
-//                           .collect();
-
-//   return records;
-// });
-
