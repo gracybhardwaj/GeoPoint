@@ -7,8 +7,9 @@ import { v } from "convex/values";
 // for each crop, get sensors that is assigned to the crop
 // for each sensor, get the data (like humidity, temp, ...)
 
+// Mutation to create a new record for sensor data
 export const createRecord = mutation({
-  args: { humidity: v.float64(), temp: v.float64(), sensorid: v.string(), uv: v.float64()},
+  args: { humidity: v.float64(), temp: v.float64(), sensorid: v.string(), uv: v.float64() },
   handler: async (ctx, args) => {
     const newRecordId = await ctx.db.insert("records", {
       humidity: args.humidity,
