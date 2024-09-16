@@ -38,7 +38,7 @@ export default function App() {
         <h2>Low-cost & Low-power Waterproof Geopoint</h2>
         <p>
           This project leverages sensors and satellite/cellular connectivity to gather environmental data on farms in remote areas. 
-          The data is processed using AI to optimize irrigation schedules, predict trends such as drought or disease outbreaks, 
+          The data is from senors is then processed using AI to optimize irrigation schedules, predict trends such as drought or disease outbreaks, 
           and provide real-time insights through a full-stack web application.
         </p>
       </section>
