@@ -7,5 +7,5 @@ export default defineConfig({
       external: ['dgram'],
     },
   },
-  // You can add other Vite configurations here for your frontend if necessary
+  // You can add other Vite configurations here for your frontend 
 });
