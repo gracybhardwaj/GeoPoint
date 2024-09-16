@@ -7,7 +7,7 @@ const aiSuggestions = {
         - Current humidity is at <strong>45.2%</strong>, which is below optimal for this crop. Increase irrigation by <strong>15%</strong> to prevent dehydration.
         <br />- UV index at <strong>3.5</strong> is moderate; <strong>no UV protection required for now.</strong>
         <br />- Temperature at <strong>22.1°C</strong> is ideal; <strong>no temperature-related adjustments needed.</strong>
-        <br />- Drought risk: Medium. <strong>Continuously monitor for sharp humidity declines.</strong>
+        <br />- Drought Risk: Medium. <strong>Continuously monitor for sharp humidity declines.</strong>
       </>
     ),
     sensor_2: (
@@ -15,7 +15,7 @@ const aiSuggestions = {
         - Humidity at <strong>52.5%</strong> is optimal for crop growth; <strong>no irrigation adjustments necessary.</strong>
         <br />- UV index at <strong>4.1</strong> indicates slightly higher UV exposure. <strong>Consider shading for sensitive crops.</strong>
         <br />- Temperature is at <strong>24.3°C</strong>, which is warm but within optimal range. <strong>Continue monitoring for heat spikes.</strong>
-        <br />- No signs of disease or drought risk. <strong>Maintain current conditions.</strong>
+        <br />- No signs of disease or drought risk. <strong>Suggest to maintain current conditions.</strong>
       </>
     ),
     sensor_3: (
